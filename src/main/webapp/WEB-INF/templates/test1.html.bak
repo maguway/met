@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style_ust.css}">
+    <script th:src="@{/js/jquery-slim.min.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color:#0060cc">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupporedtContent" aria-controls="navbarSupporedtContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupporedtContent">
+            <ul class="nav nav-tabs" id="navNavbar" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="info-tab" href="/" aria-controls="info"
+                       aria-selected="true"><h5>Справочная информация</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="cont-tab" data-toggle="tab" href="#cont" role="tab" aria-controls="cont"
+                       aria-selected="true"><h5>Расчет стоимости</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="docs-tab" data-toggle="tab" href="#docs" role="tab" aria-controls="docs"
+                       aria-selected="true"><h5>Документация</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="test-tab" data-toggle="tab" href="#test" role="tab"
+                       aria-controls="test" aria-selected="true"><h5>Тестирование</h5></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="tab-content" id="navNavbarContent">
+    <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">Справочная информация
+    </div>
+    <div class="tab-pane fade" id="cont" role="tabpanel" aria-labelledby="cont-tab">Расчет стоимости</div>
+    <div class="tab-pane fade" id="docs" role="tabpanel" aria-labelledby="docs-tab">Документация</div>
+    <div class="tab-pane fade" id="test" role="tabpanel" aria-labelledby="test-tab">Тестирование</div>
+</div>
+
+<br>
+<br>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">
+        <img th:src="@{/img/bootstrap-solid.svg}"
+             width="30" height="30" alt="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupporedtContent2" aria-controls="navbarSupporedtContent2"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupporedtContent2">
+        <ul class="navbar-nav nav-tabs">
+            <li class="nav-item active">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Prices</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-toggle="modal" data-target="#logModal">Log in</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link disabled">About as</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<br>
+<br>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab1" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+           aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+           aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+           aria-selected="false">Contact</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab1">Один</div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Два</div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Три</div>
+</div>
+
+</body>
+</html>

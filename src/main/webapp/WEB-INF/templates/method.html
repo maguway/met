@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style_ust.css}">
+    <script th:src="@{/js/jquery-slim.min.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+
+    <title>METHOD method</title>
+    <link rel="icon" th:href="@{/img/favicon.ico}" type="image/ico">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color:#0060cc">
+    <div class="container">
+        <img th:src="@{img/logo_top.png}" alt="Logo">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupporedtContent" aria-controls="navbarSupporedtContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupporedtContent">
+            <ul class="navbar-nav mr-auto" id="navNavbar" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="cont-tab" href="/" aria-controls="info"
+                       aria-selected="true"><h5>расчет стоимости</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="info-tab" href="/info" aria-controls="info"
+                       aria-selected="true"><h5>справочная информация</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="docs-tab" href="/documents" aria-controls="info"
+                       aria-selected="true"><h5>документация</h5></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br>
+<div class="container">
+    <form th:action="@{/method}" method="post" th:object="${method}">
+        <h4><label style="color: royalblue"><b>
+            Расчёт затрат на создание, развитие и сопровождение информационных систем государственных органов
+        </b></label></h4>
+        <br>
+        <table border="0" style="width: 1100px; border: 0px solid darkslateblue">
+            <tr>
+                <td style="width: 250px"><label for="kTrudFun"
+                                                title="Вариант использования – внешняя спецификация последовательности действий, которые система или другая сущность могут выполнять в процессе взаимодействия с акторами (любая внешняя вычислительная сущность). Количество вариантов использования определяется из диаграммы вариантов использования модели информационной системы.">
+                    количество вариантов: </label></td>
+                <td style="width: 110px"><input type="number" th:min="1" class="form-control" id="kTrudFun"
+                                                th:field="*{kTrudFun}"></td>
+                <td></td>
+                <td th:colspan="4"><label for="kUser">количество пользователей системы: </label></td>
+                <td><input type="number" th:min="1" class="form-control" id="kUser" th:field="*{kUser}"></td>
+                <td style="width: 70px"></td>
+            </tr>
+            <tr>
+                <td><label for="kTrudEnt"
+                           title="Тип объекта - объект предметной области, обладающий уникальными свойствами состояния и поведения в рамках разрабатываемой ИС">
+                    количество типов объектов: </label></td>
+                <td><input type="number" th:min="1" class="form-control" id="kTrudEnt" th:field="*{kTrudEnt}"></td>
+                <td></td>
+                <td th:colspan="4"><label for="workTime"
+                                          title="Нормативы трудоёмкости - трудоёмкость реализации функциональной единицы измерения в человеко-часах. Tрудоёмкость разработки ИС – затраты труда, рабочего времени на производство прикладного программного обеспечения ИС, измеряемых в человеко-месяцах">
+                    количество человеко-часов в одном чел/мес: </label></td>
+                <td align="center"><input type="number" th:min="1" class="form-control" id="workTime"
+                                          th:field="*{workTime}" style="width: 110px"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><label for="kTrudClass"
+                           title="Количество свойств типов объектов оценивается подсчетом количества свойств классов, изображенных на диаграммах классов">
+                    количество свойств типов: </label></td>
+                <td><input type="number" th:min="1" class="form-control" id="kTrudClass" th:field="*{kTrudClass}"></td>
+                <td></td>
+                <td th:colspan="4"><label for="kSysProm"
+                                          title="В зависимости от стадии проводимых работ (либо проведение эксплуатационных испытаний, либо поддержка эксплуатации) зависит норма занятого персонала">
+                    состояние системы (экспл. испытания / нет.): </label></td>
+                <td style="width: 50px" align="center"><input type="checkbox" th:field="*{kSysProm}" id="kSysProm"/>
+                </td>
+                <td align="center">да / нет</td>
+            </tr>
+            <tr>
+                <td><label for="kTrudConn" title="Взаимосвязи между типами объектов">
+                    количество взаимосвязей: </label></td>
+                <td><input type="number" th:min="1" class="form-control" id="kTrudConn" th:field="*{kTrudConn}"></td>
+                <td></td>
+                <td th:colspan="4"><label for="kSysAInf"
+                                          title="В зависимости от типа информационной системы меняется норма занятого персогала. Для обеспечения функционирования аналитических ИС требуются более высокие нормы занятого персонала по сравнению с учетными ИС">
+                    тип информационной системы (аналитическая / нет): </label></td>
+                <td align="center"><input type="checkbox" th:field="*{kSysAInf}" id="kSysAInf"/></td>
+                <td align="center">да / нет</td>
+            </tr>
+            <tr>
+                <td><label for="kTrudNod"
+                           title="Оценка количества типов узлов определяется на основании диаграммы развёртывания ИС. Количество типов узлов подсчитывается как общее число типов узлов на диаграмме развёртывания. Если UML-диаграмма развёртывания не построена, то количество типов узлов можно оценить по количеству типов ЭВМ и внешних устройств ЭВМ, используемых при функционировании ИС. Примерами ЭВМ и внешних устройств ЭВМ могут служить серверы, рабочие станции (в случае размещения составных частей ИС)">
+                    количество типов узлов: </label></td>
+                <td><input type="number" th:min="1" class="form-control" id="kTrudNod" th:field="*{kTrudNod}"></td>
+                <td></td>
+                <td style="width: 280px">
+                    <label th:if="${method.rMin}!=0" for="kTrudConn"
+                           title="Исходя из предварительных расчетов, срок разработки ППО может быть уменьшен со среднего до минимального за счет увеличения трудоемкости">
+                        сократить срок разработки с:</label>
+                </td>
+                <td align="center" style="width: 50px">
+                    <p th:if="${method.rMin}!=0" th:text="${method.rMed}"></p>
+                </td>
+                <td align="center" style="width: 60px"><label th:if="${method.rMin}!=0" for="kTrudConn">до:</label></td>
+                <td style="width: 50px" align="center">
+                    <p th:if="${method.rMin}!=0" th:text="${method.rMin}"></p>
+                </td>
+                <td><input type="number" th:if="${method.rMin}!=0" th:min="${method.rMin}" th:max="${method.rMed}"
+                           th:value="${method.rMed}"
+                           th:step="0.1" class="form-control" id="cutLim" th:field="*{cutLim}">
+                </td>
+                <td align="center" th:if="${method.rMin}!=0">мес.</td>
+            </tr>
+        </table>
+        <br>
+
+        <div class="spoiler-block">
+            <a href="#" class="spoiler-title" style="color: royalblue"><h5>поправочные коэффициенты</h5></a>
+            <div class="spoiler-content">
+                <div>
+                    * - определяется на этапе разработки технического задания на создание, развитие информационной
+                    системы. <br>
+                    ** - фиксируется при проведении аудита информационных систем разработчика <br><br>
+                </div>
+                <table border="1" bordercolor="lightgray" style="width: 1050px; border: 0px solid lightgray"
+                       rules="rows" cellspacing="1" cellpadding="2">
+                    <tr style="color:royalblue">
+                        <th>группа частных поправочных коэффициентов</th>
+                        <th>фактор и обозначение частного поправочного коэффициента</th>
+                        <th>описание фактора частного поправочного коэффициента</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="10" style="vertical-align: top; padding: 5px"><b>внутренние факторы</b></td>
+                        <td style="padding: 5px"><b>К1</b> режим эксплуатации ИС</td>
+                        <td>
+                            <select id="kTrud_k1" class="form-control" th:field="*{kTrud_k1}">
+                                <option value=1.0>1.0 - обработка данных в режиме разделения времени</option>
+                                <option value=1.04>1.04 - параллельная обработка данных</option>
+                                <option value=1.05>1.05 - обработка данных в режиме реального времени</option>
+                                <option value=1.07 selected>1.07 - совмещённая обработка данных</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К2</b> масштаб ИС</td>
+                        <td>
+                            <select id="kTrud_k2" class="form-control" th:field="*{kTrud_k2}">
+                                <option value=0.95>0.95 - малые ИС (до 10 пользователей с непродолжительным ЖЦ)</option>
+                                <option value=1.0 selected>1.0 - средние ИС (от 11 до 100 пользователей с длительным ЖЦ
+                                    с
+                                    возможностью роста до крупных систем)
+                                </option>
+                                <option value=1.05>1.05 - крупные ИС (от 101 до 1000 пользователей с длительным ЖЦ и
+                                    миграцией
+                                    унаследованных систем)
+                                </option>
+                                <option value=1.08>1.08 - сверхбольшие (с 1000 до 10 000 пользователей)</option>
+                                <option value=1.8>1.8 - Свыше 10 000 пользователей</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К3</b> стабильность ИС</td>
+                        <td>
+                            <select id="kTrud_k3" class="form-control" th:field="*{kTrud_k3}">
+                                <option value=1.0>1.0 - дискретное внесение изменений</option>
+                                <option value=0.95>0.95 - маловероятное внесение изменений</option>
+                                <option value=1.5 selected>1.5 - постоянное внесение изменений</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К4</b> защита от несан. доступа</td>
+                        <td>
+                            <select id="kTrud_k4" class="form-control" th:field="*{kTrud_k4}">
+                                <option value=0.98 selected>0.98 - слабая</option>
+                                <option value=1.0>1.0 - средняя</option>
+                                <option value=1.05>1.05 - сильная</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К5</b> защита ПО и данных</td>
+                        <td>
+                            <select id="kTrud_k5" class="form-control" th:field="*{kTrud_k5}">
+                                <option value=0.97>0.97 - слабая</option>
+                                <option value=1.0 selected>1.0 - средняя</option>
+                                <option value=1.3>1.3 - сильная</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К6</b> контрол. след операций</td>
+                        <td>
+                            <select id="kTrud_k6" class="form-control" th:field="*{kTrud_k6}">
+                                <option value=1.0 selected>1.0 - не имеется</option>
+                                <option value=1.08>1.08 - выборочное отслеживание</option>
+                                <option value=1.13>1.13 - полное отслеживание</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К7</b> отказоустойчивость</td>
+                        <td>
+                            <select id="kTrud_k7" class="form-control" th:field="*{kTrud_k7}">
+                                <option value=0.92>0.92 - Низкая*</option>
+                                <option value=1.0 selected>1.0 - Средняя*</option>
+                                <option value=1.15>1.15 - Высокая*</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К8</b> восстанавливаемость</td>
+                        <td>
+                            <select id="kTrud_k8" class="form-control" th:field="*{kTrud_k8}">
+                                <option value=0.98>0.98 - Низкая*</option>
+                                <option value=1.0>1.0 - Средняя*</option>
+                                <option value=1.12 selected>1.12 - Высокая*</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К9</b> длительность обработки</td>
+                        <td>
+                            <select id="kTrud_k9" class="form-control" th:field="*{kTrud_k9}">
+                                <option value=0.92>0.92 - медленная*</option>
+                                <option value=1.0 selected>1.0 - умеренная*</option>
+                                <option value=1.21>1.21 - быстрая*</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К10</b> исходный язык ИС</td>
+                        <td>
+                            <select id="kTrud_k10" class="form-control" th:field="*{kTrud_k10}">
+                                <option value=1.0 selected>1.0 - объектно-ориентированный (C++ или эквивалентный)
+                                </option>
+                                <option value=1.07>1.07 - функциональный (Лисп или эквивалентный)</option>
+                                <option value=1.08>1.08 - традиционный (Кобол, Фортран и т.д.)</option>
+                                <option value=1.09>1.09 - процедурный (Си или эквивалентный)</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td rowspan="7" style="vertical-align: top; padding: 5px"><b>факторы среды</b></td>
+                        <td style="padding: 5px"><b>К11</b> класс пользователя</td>
+                        <td>
+                            <select id="kTrud_k11" class="form-control" th:field="*{kTrud_k11}">
+                                <option value=1.0>1.0 - специалист (эксперт)*</option>
+                                <option value=1.06>1.06 - другая ИС (ПО) *</option>
+                                <option value=1.07 selected>1.07 - средний*</option>
+                                <option value=1.09>1.09 - технические средства*</option>
+                                <option value=1.12>1.12 - начинающий*</option>
+                                <option value=1.14>1.14 - случайный*</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К12</b> требования к ЦП, видео</td>
+                        <td>
+                            <select id="kTrud_k12" class="form-control" th:field="*{kTrud_k12}">
+                                <option value=0.99>0.99 - высокие*</option>
+                                <option value=1.0 selected>1.0 - средние*</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К13</b> требования к оперативной памяти</td>
+                        <td>
+                            <select id="kTrud_k13" class="form-control" th:field="*{kTrud_k13}">
+                                <option value=1.0>1.0 - большая*</option>
+                                <option value=1.04 selected>1.04 - малая*</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К14</b> требования к внешней памяти</td>
+                        <td>
+                            <select id="kTrud_k14" class="form-control" th:field="*{kTrud_k14}">
+                                <option value=1.0 selected>1.0 - большая*</option>
+                                <option value=1.01>1.01 - малая*</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К15</b> требования к локальной сети</td>
+                        <td>
+                            <select id="kTrud_k15" class="form-control" th:field="*{kTrud_k15}">
+                                <option value=1.0>1.0 - высокие требования*</option>
+                                <option value=1.02 selected>1.02 - средние требования*</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К16</b> критичность ИС</td>
+                        <td>
+                            <select id="kTrud_k16" class="form-control" th:field="*{kTrud_k16}">
+                                <option value=1.0 selected>1.0 - организационная безопасность</option>
+                                <option value=1.13>1.13 - социальный хаос и паника</option>
+                                <option value=1.16>1.16 - национальная безопасность</option>
+                                <option value=1.18>1.18 - человеческая жизнь</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px"><b>К17</b> готовность**
+                        </td>
+                        <td>
+                            <select id="kTrud_k17" class="form-control" th:field="*{kTrud_k17}">
+                                <option value=0.99>0.99 - наличие в готовом виде (есть альтернативные продукты)</option>
+                                <option value=1.0>1.0 - общедоступная (известная методика)</option>
+                                <option value=1.09>1.09 - запатентованное (методика разработчика)</option>
+                                <option value=1.11 selected>1.11 - заказное (методика заказчика специфическая)</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td style="vertical-align: top; padding: 5px"><b>факторы данных</b></td>
+                        <td style="padding: 5px"><b>К18</b> представление данных</td>
+                        <td>
+                            <select id="kTrud_k18" class="form-control" th:field="*{kTrud_k18}">
+                                <option value=0.95>0.95 - форматированный файл</option>
+                                <option value=1.0 selected>1.0 - реляционный</option>
+                                <option value=1.0>1.0 - индексируемый (иерархический)</option>
+                                <option value=1.03>1.03 - документно-ориентированный</option>
+                                <option value=1.08>1.08 - сетевой</option>
+                                <option value=1.09>1.09 - объектный</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br>
+
+        <div>
+            <button class="btn btn-success">Выполнить</button>
+        </div>
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        <div th:if="${method.rMin}!=0">
+            <br>
+
+            <h5><label style="color: royalblue"><b>результат:</b></label></h5>
+
+            <table border="1" bordercolor="lightgray" style="width: 1100px; border: 0px solid lightgray"
+            rules="rows">
+            <tr style="color:royalblue">
+                <th style="width: 190px">сроки разразботки</th>
+                <th style="width: 610px"><label th:if="${method.rMed}!=${method.cutLim}">с учетом сокращения в
+                    пределах возможного периода:</label></th>
+                <th style="width: 80px; padding: 0"><p th:if="${method.rMed}!=${method.cutLim}"
+                                                       th:text="${method.cutLim}"></p></th>
+                <th></th>
+                <th style="width: 160px"><p style="text-align: left;margin-left: 0"
+                                                           th:if="${method.rMed}!=${method.cutLim}">мес.</p>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="kTrudConn">минимальный срок разработки:</label>
+                </td>
+                <td>
+                    <p th:text="${method.rMin}"></p>
+                </td>
+                <td></td>
+                <td>мес.</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="kTrudConn">максимальный срок разработки:</label>
+                </td>
+                <td>
+                    <p th:text="${method.rMax}"></p>
+                </td>
+                <td></td>
+                <td>мес.</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label for="kTrudConn">предполагаемый срок разработки:</label>
+                </td>
+                <td>
+                    <p th:text="${method.rMed}"></p>
+                </td>
+                <td></td>
+                <td>мес.</td>
+            </tr>
+            <!--                <tr>
+                                <td colspan="2">
+                                    <label for="kTrudConn">предполагаемый срок разработки в годах (минимум 1):</label>
+                                </td>
+                                <td>
+                                    <p th:text="${method.yearMed}"></p>
+                                </td>
+                                <td></td>
+                            </tr>-->
+            </table>
+
+            <br>
+
+            <table border="1" bordercolor="lightgray" style="width: 1100px; border: 0px solid lightgray"
+            rules="rows">
+            <tr style="color:royalblue">
+                <th th:colspan="4">текущие расходы в течение года</th>
+            </tr>
+            <tr>
+                <td width="750px">
+                    <label for="kTrudConn">стоимость техподдержки кодов ППО ИС за год</label>
+                </td>
+                <td style="width: 130px">
+                    <p th:text="${method.costTech}"></p>
+                </td>
+                <td></td>
+                <td style="width: 160px">рубли</td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="kTrudConn">стоимость техподдержки эксплуатации ППО ИС за год:</label>
+                </td>
+                <td>
+                    <p th:text="${method.costOneYearSup}"
+                    ></p>
+                </td>
+                <td></td>
+                <td>рубли</td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="kTrudConn">стоимость сопровождения ППО ИС за год Ссппо:</label>
+                </td>
+                <td>
+                    <p th:text="${method.costAccomp}"></p>
+                </td>
+                <td></td>
+                <td>рубли</td>
+            </tr>
+            </table>
+
+            <br>
+
+            <table border="1" bordercolor="lightgray" style="width: 1100px; border: 0px solid lightgray"
+                   rules="rows">
+                <tr style="color:royalblue">
+                    <th th:colspan="4">общие затраты</th>
+                </tr>
+                <tr>
+                    <td width="750px">
+                        <label for="kTrudConn">трудоёмкость:</label>
+                    </td>
+                    <td width="130px">
+                        <p th:text="${method.mm}"></p>
+                    </td>
+                    <td></td>
+                    <td width="160px">чел/мес</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="kTrudConn">трудоёмкость с учетом сокращения срока:</label>
+                    </td>
+                    <td>
+                        <p th:text="${method.newmm}"></p>
+                    </td>
+                    <td></td>
+                    <td>чел/мес</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="kTrudConn">средняя трудоемкость в год:</label>
+                    </td>
+                    <td>
+                        <p th:text="${method.yearmm}"></p>
+                    </td>
+                    <td></td>
+                    <td>чел/мес</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="kTrudConn">количество персонала (минимум 12):</label>
+                    </td>
+                    <td>
+                        <p th:text="${method.persons}"></p>
+                    </td>
+                    <td></td>
+                    <td>ед.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="kTrudConn">стоимость работ на разработку ППО ИС Сппо:</label>
+                    </td>
+                    <td>
+                        <p th:text="${method.costWork}"></p>
+                    </td>
+                    <td></td>
+                    <td>рубли</td>
+                </tr>
+            </table>
+        </div>
+
+
+    </form>
+</div>
+
+<br>
+
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 Министерство связи ДНР
+            <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+        </div>
+    </div>
+</footer>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.spoiler-title').click(function () {
+            $(this).parent().children('div.spoiler-content').toggle('fast');
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
