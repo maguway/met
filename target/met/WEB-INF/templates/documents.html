@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/style_ust.css}">
+    <script th:src="@{/js/jquery-slim.min.js}"></script>
+    <script th:src="@{/js/bootstrap.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+
+    <title>METHOD documents</title>
+    <link rel="icon" th:href="@{/img/favicon.ico}" type="image/ico">
+
+    <style>
+        .text-justify {
+            color: royalblue;
+            font-family: "Roboto", "Helvetica", sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 0px;
+            line-height: 30px;
+            text-decoration: none;
+            text-decoration-color: rgb(25, 94, 172);
+            text-decoration-style: solid;
+            transition-delay: 0s;
+            transition-duration: 0.23s;
+            transition-property: all;
+            text-indent: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color:#0060cc">
+    <div class="container">
+        <img th:src="@{img/logo_top.png}" alt="Logo">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupporedtContent" aria-controls="navbarSupporedtContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupporedtContent">
+            <ul class="navbar-nav mr-auto" id="navNavbar" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="cont-tab" href="/" aria-controls="info"
+                       aria-selected="true"><h5>расчет стоимости</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="info-tab" href="/info" aria-controls="info"
+                       aria-selected="true"><h5>справочная информация</h5></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="docs-tab" href="/documents" aria-controls="info"
+                       aria-selected="true"><h5>документация</h5></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-justify" style="height: 497px">
+
+    <br>
+    <h4><label style="color: royalblue"><b>
+        Документы по методике расчёта затрат на создание и сопровождение ИС
+    </b></label></h4>
+    <br>
+
+    <ul style="color: darkblue">
+        <li><a href="/docums/prikaz_366.pdf">Приказ № 366 к методике расчёта затрат на создание,
+            развитие и сопровождение информационных систем государственных органов</a></li>
+        <li><a href="/docums/method.pdf">Методика расчёта затрат на создание, развитие и
+            сопровождение информационных
+            систем государственных органов</a></li>
+    </ul>
+</div>
+
+<footer class="page-footer">
+    <div class="footer-copyright">
+        <div class="container">
+            © 2017 Министерство связи ДНР
+            <!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
+        </div>
+    </div>
+</footer>
+</body>
+</html>
